@@ -10,8 +10,8 @@ spec:
   
   # Source - your Git repository
   source:
-    repoURL: https://github.com/Osomudeya/DevOps-Home-Lab-2025.git
-    targetRevision: main  # Use main branch
+    repoURL: https://github.com/gus-hub-tech/List-Of-DevOps-Projects.git
+    targetRevision: gitops-lab  # GitOps branch ArgoCD watches
     path: gitops-safe/overlays/dev  # Path to your GitOps configs
   
   # Destination - your app namespace
@@ -33,6 +33,7 @@ spec:
     kind: Deployment
     jsonPointers:
     - /spec/template/metadata/annotations/deployment.kubernetes.io~1revision
+    - /spec/replicas  # HPA owns replica count
   - group: ''
     kind: Service
     jsonPointers:
